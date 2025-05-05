@@ -7,7 +7,7 @@ pipeline {
     DOCKERHUB_CREDS = 'dockerhub-creds'      // your Docker Hub username/password
     EC2_SSH_KEY     = 'ec2-ssh-key'          // SSH key to access EC2 as ec2-user
     IMAGE_NAME      = 'raghavboi/final-app'
-    EC2_HOST        = 'ec2-user@3.88.9.124'  // replace with your EC2 public IP
+    EC2_HOST        = 'ec2-user@44.202.40.14'  // replace with your EC2 public IP
   }
 
   stages {
