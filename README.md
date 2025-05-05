@@ -1,2 +1,2 @@
 # MovieFinder
-Trigger CI test 6
+Trigger CI test 7
