@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error - MovieDB</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <i class="fas fa-film"></i> MovieDB
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="error-container">
+        <h1>Oops! Something went wrong.</h1>
+        <p class="error-message">{{ error }}</p>
+        <a href="/" class="home-link">Return to Home</a>
+    </main>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }} - MovieDB</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <i class="fas fa-film"></i> MovieDB
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#"><i class="fas fa-tv"></i> TV Shows</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" id="movieName" placeholder="Search movies..." 
+                       onkeypress="handleEnter(event)">
+                <button onclick="searchMovie()"><i class="fas fa-search"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="movie-detail-container">
+        {% if movie.backdrop %}
+        <div class="movie-backdrop" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{{ movie.backdrop }}');">
+        {% else %}
+        <div class="movie-backdrop">
+        {% endif %}
+            <div class="backdrop-content">
+                <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="detail-poster">
+                <div class="backdrop-info">
+                    <h1>{{ movie.title }} <span class="release-year">({{ movie.release_date[:4] }})</span></h1>
+                    <div class="metadata">
+                        <span class="rating"><i class="fas fa-star"></i> {{ movie.rating }}/10</span>
+                        <span class="runtime">{{ movie.runtime }} mins</span>
+                        <span class="genres">{{ movie.genres|join(', ') }}</span>
+                    </div>
+                    <p class="tagline">{{ movie.tagline }}</p>
+                    <h3>Overview</h3>
+                    <p class="overview">{{ movie.overview }}</p>
+                    {% if movie.trailer %}
+                    <a href="{{ movie.trailer }}" target="_blank" class="trailer-btn">
+                        <i class="fab fa-youtube"></i> Watch Trailer
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <section class="cast-section">
+            <h2>Top Cast</h2>
+            <div class="cast-grid">
+                {% for member in movie.cast %}
+                <div class="cast-member">
+                    <img src="{{ member.photo }}" alt="{{ member.name }}">
+                    <div class="cast-info">
+                        <h4>{{ member.name }}</h4>
+                        <p>{{ member.character }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
